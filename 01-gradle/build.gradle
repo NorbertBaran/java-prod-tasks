@@ -1,0 +1,48 @@
+group 'uj.jwzp.gradleplay'
+version '1.0'
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+
+dependencies {
+    compile 'org.apache.commons:commons-lang3:3.9'
+}
+
+processResources{
+    String chooseBuildProfile='default'
+    if(project.hasProperty('buildProfile'))
+        chooseBuildProfile=buildProfile
+
+    apply from: 'profile-'+chooseBuildProfile+'.gradle'
+
+    Properties properties = new Properties()
+    File propsFile=new File('profile-'+chooseBuildProfile+'.gradle')
+    InputStream fileInputStream = new FileInputStream(propsFile.getPath())
+    properties.load(fileInputStream)
+    fileInputStream.close()
+
+    Map<String, String> map=new HashMap()
+    for(Object key: properties.keys()){
+        String strKey=((String) key).substring(4);
+        map.put(strKey, project.ext.get(strKey))
+    }
+
+    outputs.upToDateWhen {false}
+    expand(map)
+}
+
+task fatJar(type: Jar){
+    String chooseBuildProfile='default'
+    if(project.hasProperty('buildProfile'))
+        chooseBuildProfile=buildProfile
+
+    manifest {attributes 'Main-Class': 'uj.jwzp.gradleplay.Main'}
+    baseName(project.name + '-' + chooseBuildProfile + '-all')
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Jan",
+    "lastName": "Kowalski",
+    "address": "Krucza 12",
+    "email": "jan.kowalski@example.pl",
+    "phone": "987654321",
+    "animals": [
+      {
+        "id": 1,
+        "name": "Tom",
+        "species": "cat",
+        "born": "2012-04-23T00:00:00",
+        "die": null
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "John",
+    "lastName": "Smith",
+    "address": "Jane Street 21",
+    "email": "john.smith@example.pl",
+    "phone": "789456123",
+    "animals": [
+      {
+        "id": 2,
+        "name": "Jerry",
+        "species": "mouse",
+        "born": "2012-04-23T00:00:00",
+        "die": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "patient": {
+      "id": 1,
+      "name": "Tom",
+      "species": "cat",
+      "born": "2012-04-23T00:00:00",
+      "die": null,
+      "owner": {
+        "id": 1,
+        "name": "Jan",
+        "lastName": "Kowalski",
+        "address": "Krucza 12",
+        "email": "jan.kowalski@example.pl",
+        "phone": "987654321"
+      }
+    },
+    "date": "2020-05-30",
+    "begin": "12:15:00",
+    "duration": 15,
+    "finish": "12:30:00",
+    "description": null,
+    "status": "APPOINTMENT"
+  }
+]
